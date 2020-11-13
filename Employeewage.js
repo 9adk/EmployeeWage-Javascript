@@ -17,7 +17,6 @@ const PART_TIME_HRS = 4;
 const FULL_TIME_HRS = 8;
 const WAGE_PER_HOUR = 20;
 const NUM_OF_WORKING_DAYS = 20;
-
 function getWorkingHrs(empCheck){
     switch(empCheck){
         case IS_PART_TIME:
