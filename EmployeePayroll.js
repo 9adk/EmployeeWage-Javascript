@@ -12,40 +12,46 @@ class EmployeePayrollData {
     set id(id){
       this._id = id
     }
-    get name() {
-      return this._name
-    }
+    get name(){ return this._name;}
     set name(name){
-      this._name = name
+        let nameRegex = RegExp('^[A-Z]{1}[a-z]{3,}$')
+        if(nameRegex.test(name))
+          this._name = name
+        else
+          throw "Name incorrect"
+      }
+      get salary() {
+        return this._salary
+      }
+      set salary(salary){
+        this._salary = salary
+      }
+      get gender() {
+        return this._gender
+      }
+      set gender(gender){
+        this._gender = gender
+      }
+      get date() {
+        return this._date
+      }
+      set date(date){
+        this._date = date
+      }
+      toString(){
+        const options = {year : 'numeric', month : 'long', day : 'numeric'}
+        const empDate = this.date === undefined ? "undefined" : this.date.toLocaleDateString("en-US", options);
+        return "id = " + this.id + ", name = " + this.name + ", salary = " + this.salary 
+                       + ", gender = " + this.gender + ", date = " + empDate
+      }
     }
-    get salary() {
-      return this._salary
+    let employeePayrollData = new EmployeePayrollData(1, "Mark", 2000)
+    console.log(employeePayrollData.toString())
+    try {
+      employeePayrollData.name = "john"
+      console.log(employeePayrollData.toString())
+    } catch (error) {
+      console.error(error)
     }
-    set salary(salary){
-      this._salary = salary
-    }
-    get gender() {
-      return this._gender
-    }
-    set gender(gender){
-      this._gender = gender
-    }
-    get date() {
-      return this._date
-    }
-    set date(date){
-      this._date = date
-    }
-    toString(){
-      const options = {year : 'numeric', month : 'long', day : 'numeric'}
-      const empDate = this.date === undefined ? "undefined" : this.date.toLocaleDateString("en-US", options);
-      return "id = " + this.id + ", name = " + this.name + ", salary = " + this.salary 
-                     + ", gender = " + this.gender + ", date = " + empDate
-    }
-  }
-  let employeePayrollData = new EmployeePayrollData(1, "Mark", 2000)
-  console.log(employeePayrollData.toString())
-  employeePayrollData.name = "John"
-  console.log(employeePayrollData.toString())
-  let newEmployeePayrollData = new EmployeePayrollData(1, "Mark", 2000, "M", new Date())
-  console.log(newEmployeePayrollData.toString())
+    let newEmployeePayrollData = new EmployeePayrollData(1, "Mark", 2000, "M", new Date())
+    console.log(newEmployeePayrollData.toString())
