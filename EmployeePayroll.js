@@ -87,11 +87,11 @@ try {
 } catch (error) {
   console.error(error)
 }
-let newEmployeePayrollData = new EmployeePayrollData(0, "Mark", 2000, "M", new Date());
+let newEmployeePayrollData = new EmployeePayrollData(11, "Mark", 2000, "M", new Date());
 console.log(newEmployeePayrollData.toString());
 
 function validatingZIP(zip){
-  let zipRegex = RegExp('^[0-9]{6}$');
+  let zipRegex = RegExp('^[0-9]{3}[ ]?[0-9]{3}$');
   if(zipRegex.test(zip)){
     console.log("Zip is correct");
   }else{
