@@ -88,4 +88,16 @@ try {
   console.error(error)
 }
 let newEmployeePayrollData = new EmployeePayrollData(0, "Mark", 2000, "M", new Date());
-console.log(newEmployeePayrollData.toString())
+console.log(newEmployeePayrollData.toString());
+
+function validatingZIP(zip){
+  let zipRegex = RegExp('^[0-9]{6}$');
+  if(zipRegex.test(zip)){
+    console.log("Zip is correct");
+  }else{
+    console.log("Zip is incorrect");
+  }
+}
+var prompt = require('prompt-sync')();
+let zip = prompt("Enter the zip");
+validatingZIP(zip);
