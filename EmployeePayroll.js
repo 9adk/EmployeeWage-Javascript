@@ -101,3 +101,14 @@ function validatingZIP(zip){
 var prompt = require('prompt-sync')();
 let zip = prompt("Enter the zip");
 validatingZIP(zip);
+
+function validatingEmail(email){
+  let emailRegex = RegExp('^[a-zA-Z0-9_]+');
+  if(emailRegex.test(email)){
+    console.log("Email is correct");
+  }else{
+    console.log("Email is incorrect");
+  }
+}
+let email = prompt("Enter the email");
+validatingEmail(email);
